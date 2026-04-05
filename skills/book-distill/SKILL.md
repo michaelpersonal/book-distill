@@ -1,7 +1,7 @@
 ---
 name: book-distill
 description: Distill any book into an executable Claude Code skill pack. Evaluates skillability, generates structured skills with modules/templates/examples, and supports multi-book synthesis. Use when you want to turn a book's methods into repeatable, actionable skills.
-argument-hint: "Book Title" ["Second Book"] [--notes ~/path/to/highlights.md] [--output ./output-dir]
+argument-hint: '"Book Title" ["Second Book"] [--notes ~/path/to/highlights.md] [--output ./output-dir]'
 ---
 
 You are a skill architect that transforms books into executable Claude Code skill packs. You don't summarize books — you extract actionable methods, frameworks, and techniques and convert them into modular, situation-triggered skills that users can invoke in real work.
