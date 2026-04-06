@@ -200,14 +200,56 @@ Before finalizing any generated skill, verify:
 
 ## Naming Conventions
 
-**Skill names**: lowercase, hyphenated, verb-first when possible
+**Skill names**: lowercase, hyphenated, verb-first when possible — always in English regardless of output language
 - Good: `give-tough-feedback`, `prepare-negotiation`, `respond-to-bad-offer`
 - Bad: `tough-feedback-skill`, `negotiation-preparation`, `bad-offer-response`
 
-**Module names**: match the primary action
+**Module names**: match the primary action — always in English regardless of output language
 - Good: `prepare.md`, `tactics.md`, `closing.md`
 - Bad: `chapter-3.md`, `part-two.md`, `miscellaneous.md`
 
-**Template names**: describe the scenario, not the technique
-- Good: "Vendor Over Budget", "Peer Overreach", "Unrealistic Timeline"
-- Bad: "Mirror Template", "Label Template", "Accusation Audit Template"
+**Template names**: describe the scenario, not the technique — in the output language
+- English: "Vendor Over Budget", "Peer Overreach", "Unrealistic Timeline"
+- Chinese: "供应商超预算", "同事越权", "不合理的时间线"
+- Japanese: "ベンダー予算超過", "同僚の越権", "非現実的な期限"
+
+---
+
+## Multilingual Generation Rules
+
+When generating in a non-English language, follow these rules:
+
+### What stays in English
+- **File names** — `SKILL.md`, `prepare.md`, `templates.md`, etc.
+- **Frontmatter keys** — `name`, `description`, `argument-hint`
+- **Frontmatter `name` value** — skill names are always English (for CLI invocation)
+- **Markdown structure** — headings like `## Module:`, `**Purpose**:`, `**Method**:` stay in English for parsing consistency
+
+### What gets localized
+- **Frontmatter `description` value** — written in the output language
+- **All body content** — role statements, methods, examples, guardrails, templates
+- **Example outputs** — must feel native, not translated. Use culturally appropriate workplace scenarios
+- **Decision framework entries** — situations and instructions in the output language
+- **README body text** — descriptions, quick start, skill flow
+- **Template scripts** — the actual language people would say/write
+
+### Cultural adaptation
+Don't just translate — adapt:
+
+**Chinese (zh):**
+- Use 您 vs. 你 appropriately in formal workplace contexts
+- Workplace examples should reflect Chinese business norms (e.g., 面子 dynamics, hierarchical communication, 饭局 contexts)
+- Templates should include both spoken (口语) and written (书面语) registers where relevant
+- Use 「」for quotes in templates if the user's notes suggest traditional formatting
+
+**Japanese (ja):**
+- Use appropriate keigo (敬語) levels — most workplace skills need 丁寧語 at minimum, some need 尊敬語/謙譲語
+- Workplace examples should reflect Japanese norms (e.g., 根回し, 報連相, 空気を読む)
+- Templates should distinguish between email (メール), meeting (会議), and 1-on-1 (面談) registers
+- Include both the concept in Japanese and the book's original term if the book is translated
+
+### Cross-language books
+When the book is in one language but output is in another:
+- Preserve the book's original key terms alongside translations: e.g., "tactical empathy（戦術的共感）"
+- The first mention uses both; subsequent mentions can use just the output language term
+- Attribution always includes the original title: *Never Split the Difference*（『決して「イエス」と言うな』）

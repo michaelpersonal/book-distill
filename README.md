@@ -20,12 +20,27 @@ In Claude Code:
 /book-distill "Never Split the Difference"
 /book-distill "Radical Candor" "Crucial Conversations"
 /book-distill "The Manager's Path" --notes ~/highlights/managers-path.md
+/book-distill "人性的弱点" --lang zh
+/book-distill "嫌われる勇気" --lang ja
+/book-distill "影响力" "Never Split the Difference" --lang en
 ```
 
 **Arguments:**
 - One or more book titles (required)
+- `--lang` — output language: `en` (English), `zh` (Chinese), `ja` (Japanese). Auto-detected from title if omitted
 - `--notes` — path to highlights/excerpts/notes file (optional)
 - `--output` — output directory (optional, defaults to cwd)
+
+## Language Support
+
+Supports English, Chinese, and Japanese — not as translation, but as native generation:
+
+- **Auto-detects** language from book title, or set explicitly with `--lang`
+- **Localizes all content**: methods, examples, templates, guardrails, README
+- **Culturally adapts**: workplace examples reflect local norms (e.g., 面子 dynamics in Chinese, 根回し/報連相 in Japanese)
+- **Preserves original terms**: key concepts show the source language term alongside the output language
+- **File names stay English**: `SKILL.md`, `prepare.md` etc. for CLI compatibility
+- **Cross-language synthesis**: can merge books from different languages into one skill pack
 
 ## How It Works
 

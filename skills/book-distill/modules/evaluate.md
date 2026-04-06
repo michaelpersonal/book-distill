@@ -24,6 +24,8 @@ For the given book, state:
 
 If the user provided notes/highlights, read them first and incorporate before presenting.
 
+**Language note:** Present the evaluation in the detected output language. For books originally in another language, use the original title alongside any translated title (e.g., *嫌われる勇気* (The Courage to Be Disliked)). Preserve the book's original terminology for key concepts — provide the native term first, then a gloss if the output language differs from the book's language.
+
 ### Step 2: User Validation
 
 Ask the user:
@@ -138,3 +140,20 @@ When your confidence is Low, switch to structured Q&A before scoring:
 5. "What's the book's domain — is it tightly focused or does it cover many areas?"
 
 Use the answers to score. Be transparent: "Based on your description, here's how I'd score it — adjust if I'm off."
+
+---
+
+## Language-Specific Evaluation Notes
+
+Some scoring dimensions behave differently across languages:
+
+**Concreteness in Chinese/Japanese books:**
+- Many Chinese business/self-help books (e.g., 《非暴力沟通》, 《关键对话》) are translations of English originals — check whether the original has higher concreteness than the translation suggests
+- Japanese books often embed methods in narrative storytelling (物語形式) — score based on extractable methods, not surface presentation
+
+**Scope Clarity across cultures:**
+- Chinese books in the 管理学 (management) genre often cover broader scope than Western equivalents — this is a cultural norm, not a weakness. Score based on whether distinct modules can still be extracted
+- Japanese self-help (自己啓発) often mixes philosophy with practical advice — look for the practical core
+
+**Situational Triggers:**
+- Some books frame techniques around cultural contexts (e.g., Japanese 空気を読む (reading the room), Chinese 面子 (face)) — these ARE valid situational triggers, score accordingly

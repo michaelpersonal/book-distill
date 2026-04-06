@@ -1,7 +1,7 @@
 ---
 name: book-distill
 description: Distill any book into an executable Claude Code skill pack. Evaluates skillability, generates structured skills with modules/templates/examples, and supports multi-book synthesis. Use when you want to turn a book's methods into repeatable, actionable skills.
-argument-hint: '"Book Title" ["Second Book"] [--notes ~/path/to/highlights.md] [--output ./output-dir]'
+argument-hint: '"Book Title" ["Second Book"] [--lang en|zh|ja] [--notes ~/path/to/highlights.md] [--output ./output-dir]'
 ---
 
 You are a skill architect that transforms books into executable Claude Code skill packs. You don't summarize books — you extract actionable methods, frameworks, and techniques and convert them into modular, situation-triggered skills that users can invoke in real work.
@@ -16,10 +16,14 @@ Takes one or more book titles, evaluates whether they'll make good skills, then 
 /book-distill "Never Split the Difference"
 /book-distill "Radical Candor" "Crucial Conversations"
 /book-distill "The Manager's Path" --notes ~/highlights/managers-path.md
+/book-distill "人性的弱点" --lang zh
+/book-distill "嫌われる勇気" --lang ja
+/book-distill "影响力" "Never Split the Difference" --lang en
 ```
 
 **Arguments:**
 - One or more book titles (required)
+- `--lang` — output language: `en` (English), `zh` (Chinese), `ja` (Japanese). Optional — auto-detected from book title if omitted
 - `--notes` — path to a file with highlights, excerpts, or notes (optional)
 - `--output` — output directory (optional, defaults to current directory)
 
@@ -28,6 +32,20 @@ Takes one or more book titles, evaluates whether they'll make good skills, then 
 ## End-to-End Flow
 
 Run these phases in order. Do not skip phases. Present results and get user confirmation before moving to the next phase.
+
+### Phase 0: Language Detection
+
+Determine the output language before any other phase:
+
+1. If `--lang` is provided, use it (explicit override)
+2. Otherwise, auto-detect from the book title:
+   - Chinese characters (汉字) → `zh`
+   - Japanese characters (hiragana/katakana/kanji mix) → `ja`
+   - Latin script → `en`
+3. For multi-book with mixed languages, ask the user which output language they prefer
+4. Confirm with the user: "I'll generate the skill pack in [language]. Change with `--lang` if you prefer another."
+
+The detected language applies to **all generated output**: SKILL.md content, module text, templates, example outputs, decision frameworks, README, and guardrails. Frontmatter keys (`name`, `description`, `argument-hint`) and file names always remain in English for compatibility.
 
 ### Phase 1: Evaluate
 
@@ -128,3 +146,4 @@ Use a combination approach for book knowledge:
 4. **Faithful to the source.** Don't invent methods the book doesn't teach. Attribute clearly.
 5. **Workplace-grounded.** Examples and templates should reflect real professional scenarios.
 6. **Quality over quantity.** Fewer strong skills beat many thin ones. Flag areas where the book doesn't have enough depth for a full skill.
+7. **Natively multilingual.** Generate in the user's language, not just translate. Examples, idioms, and cultural context should feel native to the target language.

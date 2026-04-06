@@ -165,3 +165,26 @@ For 3+ books:
 - Group complementary concepts that span 3+ books into single synthesized modules
 - The router SKILL.md becomes more important — it should clearly map "I'm facing X" → "use this skill from [Book(s)]"
 - Consider grouping books by domain if they diverge significantly (e.g., two leadership books + one sales book → separate sections in the router)
+
+---
+
+## Cross-Language Synthesis
+
+When synthesizing books from different languages (e.g., an English book + a Chinese book):
+
+### Concept Mapping Across Languages
+- Map concepts by meaning, not by terminology — the same technique may have very different names across languages
+- Note when a concept is culturally specific to one language's context (e.g., Japanese 根回し has no direct English equivalent but may complement Western "stakeholder alignment" techniques)
+- Flag concepts that are the same idea but culturally adapted differently — these are prime synthesis candidates
+
+### Output Language
+- The synthesized module is written in the output language (set by `--lang` or auto-detected)
+- Preserve key terms from both source languages on first mention: e.g., "accusation audit（指控审计）"
+- Attribution includes original titles in their original language
+
+### Cultural Integration
+When two books approach the same situation from different cultural contexts:
+- Don't flatten cultural differences — name them as strengths
+- Present the cultural context where each approach works best
+- The synthesized module should give the user tools for both contexts
+- Example: A module synthesizing Western direct feedback techniques with Chinese face-preserving communication would note when each approach is more effective, not just merge them into one
